@@ -1,0 +1,8 @@
+torch>=2.0.0
+transformers>=4.30.0
+PySimpleGUI>=4.60.0
+Pillow>=9.0.0
+pyttsx3>=2.90
+pytesseract>=0.3.10
+mss>=6.1.0
+accelerate>=0.20.0
