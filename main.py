@@ -1,6 +1,7 @@
 import os
 import re
 import threading
+import json
 
 def extract_three_replies(text):
     # Suche nach Nummerierung 1. 2. 3. oder - - - oder Zeilenumbrüche
@@ -26,6 +27,29 @@ def extract_three_replies(text):
 
     return "\n".join(replies)
 
+def load_config(config_path="config_enhanced.json"):
+    """Load configuration from JSON file with fallback to default config."""
+    try:
+        if os.path.exists(config_path):
+            with open(config_path, 'r') as f:
+                return json.load(f)
+        else:
+            # Fallback to original config
+            with open("config.json", 'r') as f:
+                config = json.load(f)
+                # Add default slicing config if not present
+                if 'screenshot_slicing' not in config:
+                    config['screenshot_slicing'] = {
+                        'enabled': False,
+                        'slice_modes': {'horizontal_halves': True},
+                        'ui_detection': {'enabled': True},
+                        'performance': {'max_slices_per_image': 4}
+                    }
+                return config
+    except Exception as e:
+        print(f"Error loading config: {e}")
+        return {'model': 'EleutherAI/gpt-neo-1.3B', 'screenshot_slicing': {'enabled': False}}
+
 import time
 import PySimpleGUI as sg
 import pyttsx3
@@ -36,6 +60,17 @@ import hashlib
 # Set environment variables early (also can be set in terminal)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+
+# Load configuration
+config = load_config()
+slicing_enabled = config.get('screenshot_slicing', {}).get('enabled', False)
+
+# Import slicing module if enabled
+if slicing_enabled:
+    from screenshot_slicer import ScreenshotSlicer, get_most_relevant_slice
+    screenshot_slicer = ScreenshotSlicer(config.get('screenshot_slicing'))
+else:
+    screenshot_slicer = None
 
 processing_queue = queue.Queue()
 
@@ -210,6 +245,106 @@ def generate_multimodal_response(image_path, processor, model, device, prompt_in
         else:
             raise
 
+def process_screenshot_slices(screenshot_path, processor, model, device, prompt_instruction, chat_mode=False):
+    """
+    Process screenshot using slicing for more efficient analysis.
+    
+    Args:
+        screenshot_path: Path to the screenshot
+        processor: BLIP2 processor
+        model: BLIP2 model
+        device: Processing device
+        prompt_instruction: Instruction for the model
+        chat_mode: Whether in chat mode
+        
+    Returns:
+        Tuple of (combined_response, debug_logs)
+    """
+    debug_logs = []
+    
+    if not screenshot_slicer:
+        # Fallback to original processing
+        return generate_multimodal_response(screenshot_path, processor, model, device, prompt_instruction, chat_mode)
+    
+    try:
+        debug_logs.append("Starting screenshot slicing process...")
+        
+        # Slice the screenshot
+        slices = screenshot_slicer.slice_screenshot(screenshot_path)
+        debug_logs.append(f"Created {len(slices)} slices from screenshot")
+        
+        if not slices:
+            debug_logs.append("No slices created, falling back to full image processing")
+            return generate_multimodal_response(screenshot_path, processor, model, device, prompt_instruction, chat_mode)
+        
+        # Get relevant slices based on configuration
+        relevant_slices = screenshot_slicer.get_relevant_slices(slices, mode='auto')
+        debug_logs.append(f"Selected {len(relevant_slices)} relevant slices for processing")
+        
+        responses = []
+        slice_processing_mode = config.get('screenshot_slicing', {}).get('processing', {}).get('mode', 'auto')
+        
+        if slice_processing_mode == 'best_slice_only':
+            # Process only the most relevant slice
+            best_slice = get_most_relevant_slice(relevant_slices)
+            if best_slice:
+                if 'slice_path' in best_slice:
+                    response, slice_debug = generate_multimodal_response(
+                        best_slice['slice_path'], processor, model, device, prompt_instruction, chat_mode
+                    )
+                else:
+                    # Process slice data in memory
+                    import tempfile
+                    import cv2
+                    with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+                        cv2.imwrite(temp_file.name, best_slice['slice_data'])
+                        response, slice_debug = generate_multimodal_response(
+                            temp_file.name, processor, model, device, prompt_instruction, chat_mode
+                        )
+                        os.unlink(temp_file.name)
+                
+                responses.append(f"[{best_slice['name']}]: {response}")
+                debug_logs.append(f"Processed slice {best_slice['name']}: {slice_debug}")
+        
+        else:
+            # Process multiple relevant slices
+            for slice_info in relevant_slices:
+                try:
+                    if 'slice_path' in slice_info:
+                        response, slice_debug = generate_multimodal_response(
+                            slice_info['slice_path'], processor, model, device, prompt_instruction, chat_mode
+                        )
+                    else:
+                        # Process slice data in memory
+                        import tempfile
+                        import cv2
+                        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+                            cv2.imwrite(temp_file.name, slice_info['slice_data'])
+                            response, slice_debug = generate_multimodal_response(
+                                temp_file.name, processor, model, device, prompt_instruction, chat_mode
+                            )
+                            os.unlink(temp_file.name)
+                    
+                    responses.append(f"[{slice_info['name']}]: {response}")
+                    debug_logs.append(f"Processed slice {slice_info['name']}: {slice_debug}")
+                    
+                except Exception as e:
+                    debug_logs.append(f"Error processing slice {slice_info['name']}: {e}")
+        
+        # Combine responses
+        if responses:
+            combined_response = "\n\n".join(responses)
+            debug_logs.append("Successfully combined responses from all slices")
+            return combined_response, "\n".join(debug_logs)
+        else:
+            debug_logs.append("No successful slice responses, falling back to full image")
+            return generate_multimodal_response(screenshot_path, processor, model, device, prompt_instruction, chat_mode)
+            
+    except Exception as e:
+        debug_logs.append(f"Error in slice processing: {e}")
+        debug_logs.append("Falling back to full image processing")
+        return generate_multimodal_response(screenshot_path, processor, model, device, prompt_instruction, chat_mode)
+
 def screenshot_thread():
     while True:
         filename = get_next_filename()
@@ -243,14 +378,26 @@ def processing_thread(window, processor, model, device):
 
         chat_mode = "whatsapp" in ocr_text_raw
 
-        description, debug_log = generate_multimodal_response(
-            screenshot_path,
-            processor,
-            model,
-            device,
-            prompt_instruction=prompt,
-            chat_mode=chat_mode
-        )
+        # Use slicing if enabled, otherwise use original processing
+        if slicing_enabled and screenshot_slicer:
+            description, debug_log = process_screenshot_slices(
+                screenshot_path,
+                processor,
+                model,
+                device,
+                prompt_instruction=prompt,
+                chat_mode=chat_mode
+            )
+        else:
+            description, debug_log = generate_multimodal_response(
+                screenshot_path,
+                processor,
+                model,
+                device,
+                prompt_instruction=prompt,
+                chat_mode=chat_mode
+            )
+        
         prompt = description
         from response_formatter import format_replies
         replies_text = format_replies(description)
@@ -259,8 +406,11 @@ def processing_thread(window, processor, model, device):
         clear_memory()
 
 def main():
+    slicing_status = "Enabled" if slicing_enabled else "Disabled"
+    
     layout = [
         [sg.Text('Jarvis Screenshot Assistent', font=("Helvetica", 20), justification='center', expand_x=True)],
+        [sg.Text(f'Screenshot Slicing: {slicing_status}', font=("Helvetica", 10), justification='center', expand_x=True)],
         [sg.Frame('Antwortvorschläge', [
             [sg.Multiline(size=(80, 15), key='-OUTPUT-', disabled=True, autoscroll=True, font=("Consolas", 12), expand_x=True, expand_y=True)]
         ], expand_x=True, expand_y=True)],
@@ -291,7 +441,8 @@ def main():
 
             # Update status based on model loading
             if model_loaded_event.is_set():
-                window['-STATUS-'].update(f"Letztes Update: {time.strftime('%H:%M:%S')}")
+                slice_info = f" | Slicing: {slicing_status}" if slicing_enabled else ""
+                window['-STATUS-'].update(f"Letztes Update: {time.strftime('%H:%M:%S')}{slice_info}")
             else:
                 window['-STATUS-'].update("Modell wird geladen, bitte warten...")
 
