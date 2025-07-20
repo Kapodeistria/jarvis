@@ -89,8 +89,38 @@ def get_screenshot(path):
         sct.shot(output=path)
     return path
 
-# OCR Funktion
-def extract_text_from_image(image_path):
+# OCR Funktion - Enhanced with improved accuracy
+def extract_text_from_image(image_path, enhanced=None):
+    """
+    Extract text from image with optional enhanced processing.
+    
+    Args:
+        image_path: Path to the image
+        enhanced: Whether to use enhanced OCR processing (None = auto-detect from config)
+        
+    Returns:
+        Extracted text
+    """
+    # Check configuration for enhanced OCR setting
+    if enhanced is None:
+        try:
+            from ocr_config_manager import get_ocr_config
+            config = get_ocr_config()
+            enhanced = config.is_enhanced_ocr_enabled()
+        except ImportError:
+            enhanced = True  # Default to enhanced
+    
+    if enhanced:
+        try:
+            from enhanced_ocr import EnhancedOCR
+            ocr = EnhancedOCR()
+            return ocr.get_optimal_text(image_path, save_debug=True)
+        except ImportError:
+            print("Enhanced OCR not available, falling back to basic OCR")
+        except Exception as e:
+            print(f"Enhanced OCR error: {e}, falling back to basic OCR")
+    
+    # Fallback to original simple implementation
     from PIL import Image
     import pytesseract
     image = Image.open(image_path)

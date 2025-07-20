@@ -1,0 +1,11 @@
+PySimpleGUI
+pyttsx3
+torch
+transformers
+Pillow
+pytesseract
+mss
+opencv-python
+numpy
+scipy
+scikit-image

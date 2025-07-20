@@ -1,0 +1,727 @@
+{
+  "image_path": "screenshot.png",
+  "start_time": "2025-07-20T09:20:13.879741",
+  "results": [
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46363282203674316,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:14.343404",
+      "config_id": "psm3_langen_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.4658827781677246,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:14.809344",
+      "config_id": "psm3_langen_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.19708633422851562,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:15.007229",
+      "config_id": "psm3_langen_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.12507867813110352,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:15.132359",
+      "config_id": "psm3_langen_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.179426908493042,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:15.313734",
+      "config_id": "psm3_langen_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.46082139015197754,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:15.775279",
+      "config_id": "psm3_langde_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.46694302558898926,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:16.242276",
+      "config_id": "psm3_langde_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.1972792148590088,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:16.440245",
+      "config_id": "psm3_langde_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.12480020523071289,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:16.565108",
+      "config_id": "psm3_langde_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 3,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.1794753074645996,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:16.746529",
+      "config_id": "psm3_langde_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.462019681930542,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:17.209291",
+      "config_id": "psm6_langen_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46776437759399414,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:17.677110",
+      "config_id": "psm6_langen_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.19779562950134277,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:17.875789",
+      "config_id": "psm6_langen_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.1243588924407959,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:18.000202",
+      "config_id": "psm6_langen_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.17960309982299805,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:18.181781",
+      "config_id": "psm6_langen_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.4659090042114258,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:18.648426",
+      "config_id": "psm6_langde_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.4659750461578369,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:19.114458",
+      "config_id": "psm6_langde_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.20099234580993652,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:19.316300",
+      "config_id": "psm6_langde_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.12497925758361816,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:19.441340",
+      "config_id": "psm6_langde_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 6,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.18065524101257324,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:19.624088",
+      "config_id": "psm6_langde_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46325182914733887,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:20.088103",
+      "config_id": "psm7_langen_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.4661986827850342,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:20.554359",
+      "config_id": "psm7_langen_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.19801950454711914,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:20.753230",
+      "config_id": "psm7_langen_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.12451338768005371,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:20.877800",
+      "config_id": "psm7_langen_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.179168701171875,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:21.058904",
+      "config_id": "psm7_langen_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.4661085605621338,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:21.525933",
+      "config_id": "psm7_langde_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.47519659996032715,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:22.001188",
+      "config_id": "psm7_langde_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.19846415519714355,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:22.200515",
+      "config_id": "psm7_langde_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.12472701072692871,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:22.325310",
+      "config_id": "psm7_langde_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 7,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.1805887222290039,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:22.508036",
+      "config_id": "psm7_langde_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46441102027893066,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:22.973196",
+      "config_id": "psm8_langen_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46934032440185547,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:23.442622",
+      "config_id": "psm8_langen_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.19808435440063477,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:23.641452",
+      "config_id": "psm8_langen_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.12449145317077637,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:23.765997",
+      "config_id": "psm8_langen_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.1798698902130127,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:23.948006",
+      "config_id": "psm8_langen_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.4621274471282959,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:24.410951",
+      "config_id": "psm8_langde_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.46536755561828613,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:24.876376",
+      "config_id": "psm8_langde_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.19818615913391113,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:25.075349",
+      "config_id": "psm8_langde_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.12464046478271484,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:25.200048",
+      "config_id": "psm8_langde_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 8,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.17951560020446777,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:25.381734",
+      "config_id": "psm8_langde_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.4603908061981201,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:25.843026",
+      "config_id": "psm11_langen_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.46840929985046387,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:26.311492",
+      "config_id": "psm11_langen_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.19887471199035645,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:26.511184",
+      "config_id": "psm11_langen_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.1248466968536377,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:26.636084",
+      "config_id": "psm11_langen_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "en",
+      "avg_confidence": 0,
+      "processing_time": 0.18016624450683594,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/en.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'en\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:26.818524",
+      "config_id": "psm11_langen_prep4"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.46219539642333984,
+      "preprocessing_config": {},
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:27.281492",
+      "config_id": "psm11_langde_prep0"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.46678948402404785,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "contrast_factor": 1.5
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:27.748339",
+      "config_id": "psm11_langde_prep1"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.19786453247070312,
+      "preprocessing_config": {
+        "grayscale": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:27.947028",
+      "config_id": "psm11_langde_prep2"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.12463140487670898,
+      "preprocessing_config": {
+        "binary_threshold": true,
+        "threshold_value": 127
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:28.071719",
+      "config_id": "psm11_langde_prep3"
+    },
+    {
+      "raw_text": "",
+      "cleaned_text": "",
+      "psm": 11,
+      "language": "de",
+      "avg_confidence": 0,
+      "processing_time": 0.18017888069152832,
+      "preprocessing_config": {
+        "enhance_contrast": true,
+        "grayscale": true,
+        "binary_threshold": true
+      },
+      "error": "(1, 'Error opening data file /usr/share/tesseract-ocr/5/tessdata/de.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your \"tessdata\" directory. Failed loading language \\'de\\' Tesseract couldn\\'t load any languages! Could not initialize tesseract.')",
+      "timestamp": "2025-07-20T09:20:28.253826",
+      "config_id": "psm11_langde_prep4"
+    }
+  ],
+  "end_time": "2025-07-20T09:20:28.254701"
+}
