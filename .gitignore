@@ -1,7 +1,8 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
 build/
 develop-eggs/
@@ -15,6 +16,7 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -27,16 +29,19 @@ MANIFEST
 # Unit test / coverage reports
 htmlcov/
 .tox/
+.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
+*.py,cover
 .hypothesis/
 .pytest_cache/
+cover/
 
-# Environment variables
+# Environments
 .env
 .venv
 env/
@@ -45,25 +50,20 @@ ENV/
 env.bak/
 venv.bak/
 
+# Jarvis specific
+screenshots/
+feedback_data_*.json
+demo_feedback_data_*.json
+*.png
+*.jpg
+*.jpeg
+
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.temp
-
-# Screenshots (if they shouldn't be tracked)
-screenshots/
-*.png
-*.jpg
-*.jpeg
