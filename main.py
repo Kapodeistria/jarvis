@@ -1,6 +1,7 @@
 import os
 import re
 import threading
+import json
 
 def extract_three_replies(text):
     # Suche nach Nummerierung 1. 2. 3. oder - - - oder Zeilenumbrüche
@@ -127,24 +128,31 @@ def clean_whatsapp_text(text):
     # Return last 20 lines only to limit input size
     return "\n".join(cleaned[-20:])
 
-def build_whatsapp_prompt(chat_text):
-    prompt = (
-        "Du bist mein persönlicher WhatsApp-Assistent, der mir hilft, im aktuellen Chat sinnvolle Antworten vorzuschlagen. "
-        "Der folgende Text ist der sichtbare Chatverlauf:\n\n"
-        f"{chat_text}\n\n"
-        "Bitte gib mir 3 kurze, freundliche Antwortvorschläge, die ich schnell übernehmen kann. "
-        "Berücksichtige den Ton und die vorherigen Nachrichten. Keine weiteren Erklärungen, nur die Vorschläge."
-    )
-    return prompt
-
 def clear_memory():
     if device == "cuda":
         torch.cuda.empty_cache()
     elif device == "mps":
         torch.mps.empty_cache()
 
-def generate_multimodal_response(image_path, processor, model, device, prompt_instruction="Be a sassy Jarvis. Suggest short, clever next steps or reminders.", chat_mode=False):
+def load_config():
+    """Lädt Konfiguration aus config.json"""
+    try:
+        with open('config.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Fallback-Konfiguration
+        return {
+            "model": "EleutherAI/gpt-neo-1.3B",
+            "jarvis_style": "sassy"
+        }
+    if device == "cuda":
+        torch.cuda.empty_cache()
+    elif device == "mps":
+        torch.mps.empty_cache()
+
+def generate_multimodal_response(image_path, processor, model, device, jarvis_style="sassy", chat_mode=False):
     from PIL import Image
+    from prompt_templates import get_prompt_template, JarvisStyle
 
     debug_logs = []
     def debug_print(*args, **kwargs):
@@ -158,21 +166,32 @@ def generate_multimodal_response(image_path, processor, model, device, prompt_in
         debug_print("Extracting OCR text...")
         ocr_text_raw = extract_text_from_image(image_path)
 
+        # Konvertiere Stil-String zu Enum
+        style_mapping = {
+            "classic": JarvisStyle.CLASSIC,
+            "sassy": JarvisStyle.SASSY, 
+            "minimalist": JarvisStyle.MINIMALIST,
+            "friendly": JarvisStyle.FRIENDLY,
+            "technical": JarvisStyle.TECHNICAL
+        }
+        style = style_mapping.get(jarvis_style, JarvisStyle.SASSY)
+
         if chat_mode:
             ocr_text = clean_whatsapp_text(ocr_text_raw)
             debug_print(f"WhatsApp mode enabled. Filtered OCR text:\n{ocr_text}")
-            prompt = build_whatsapp_prompt(ocr_text)
+            
+            # Verwende WhatsApp-Template
+            template = get_prompt_template('whatsapp', style)
+            prompt = template.build_prompt(ocr_text)
         else:
             ocr_text = filter_ocr_text(ocr_text_raw)
-            if len(ocr_text) > 400:
-                ocr_text = ocr_text[:400] + "..."
-            debug_print(f"OCR text extracted (filtered & truncated): {ocr_text}")
-            prompt = (
-                f"INSTRUCTION: {prompt_instruction}\n\n"
-                f"OCR TEXT:\n{ocr_text}\n\n"
-                "ANTWORT:"
-            )
-            debug_print("Prompt created (content hidden for clarity).")
+            debug_print(f"OCR text extracted (filtered): {ocr_text}")
+            
+            # Verwende Screenshot-Template
+            template = get_prompt_template('screenshot', style)
+            prompt = template.build_prompt(ocr_text)
+            
+        debug_print(f"Using {style.value} style for prompt generation.")
 
         inputs = processor(images=image, text=prompt, return_tensors="pt")
         debug_print("Inputs created from processor.")
@@ -226,7 +245,9 @@ def processing_thread(window, processor, model, device):
     processor = processor or globals().get('processor')
     model = model or globals().get('blip_model')
 
-    prompt = "Be a sassy Jarvis. Suggest short, clever next steps or reminders."
+    # Lade Stil aus Konfiguration
+    config = load_config()
+    current_style = config.get("jarvis_style", "sassy")
     last_hash = None
 
     while True:
@@ -248,10 +269,10 @@ def processing_thread(window, processor, model, device):
             processor,
             model,
             device,
-            prompt_instruction=prompt,
+            jarvis_style=current_style,
             chat_mode=chat_mode
         )
-        prompt = description
+        
         from response_formatter import format_replies
         replies_text = format_replies(description)
         window.write_event_value('-UPDATE-', (screenshot_path, replies_text, debug_log))
