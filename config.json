@@ -1,3 +1,11 @@
 {
-  "model": "EleutherAI/gpt-neo-1.3B"
+  "model": "EleutherAI/gpt-neo-1.3B",
+  "jarvis_style": "sassy",
+  "available_styles": {
+    "classic": "Höflich, professionell, wie der originale Jarvis",
+    "sassy": "Witzig, schlagfertig, aber konstruktiv",
+    "minimalist": "Kurz, präzise, direkt auf den Punkt",
+    "friendly": "Warmherzig, unterstützend, ermutigend",
+    "technical": "Detailliert, analytisch, technisch versiert"
+  }
 }
