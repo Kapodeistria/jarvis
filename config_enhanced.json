@@ -1,0 +1,28 @@
+{
+  "model": "EleutherAI/gpt-neo-1.3B",
+  "screenshot_slicing": {
+    "enabled": true,
+    "slice_modes": {
+      "horizontal_halves": true,
+      "vertical_halves": false,
+      "quadrants": false,
+      "custom_regions": []
+    },
+    "ui_detection": {
+      "enabled": true,
+      "header_height": 60,
+      "footer_height": 40,
+      "sidebar_width": 200
+    },
+    "performance": {
+      "min_slice_area": 10000,
+      "max_slices_per_image": 4,
+      "process_relevant_slices_only": true
+    },
+    "processing": {
+      "mode": "auto",
+      "parallel_processing": false,
+      "save_slices_to_disk": false
+    }
+  }
+}
