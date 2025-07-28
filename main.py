@@ -159,33 +159,143 @@ def extract_text_from_image(image_path):
     text = pytesseract.image_to_string(image)
     return text.strip()
 
-# OCR-Text-Filterfunktion
+# OCR-Text-Filterfunktion (improved for better UI noise filtering)
 def filter_ocr_text(text, min_letter_ratio=0.3, min_length=5):
+    """
+    Improved OCR text filter that better recognizes and removes irrelevant UI elements.
+    
+    Args:
+        text: Raw OCR text to filter
+        min_letter_ratio: Minimum ratio of letters to total characters (default 0.3)
+        min_length: Minimum line length to consider (default 5)
+    
+    Returns:
+        Filtered text with significantly reduced UI noise
+    """
+    
+    # Blacklist patterns for common UI elements, menus, timestamps, etc.
+    ui_blacklist_patterns = [
+        # Common menu items and UI elements
+        r'^(File|Edit|View|Insert|Format|Tools|Add-ons|Extensions|Help|Window|Settings|Preferences)(\s+|$)',
+        r'^(Menu|Settings|Options|Configuration|Properties)$',
+        r'^Application Menu$',
+        r'^Zoom:\s*\d+%$',
+        
+        # Timestamps and dates
+        r'\d{1,2}:\d{2}(\s*(AM|PM))?$',
+        r'^(Today|Yesterday|Tomorrow)$',
+        r'^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)',
+        r'\d{4}-\d{2}-\d{2}',
+        r'\d{1,2}/\d{1,2}/\d{4}',
+        r'Last edit was .* ago',
+        r'@ \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}',
+        
+        # Trial/license notices
+        r'TRIAL PERIOD',
+        r'\d+ days? remaining',
+        
+        # Status messages and system notifications
+        r'^(Status|Error|Warning|Info|DEBUG):\s*',
+        r'^(Connected|Disconnected|Loading|Saving)\.?\s*$',
+        r'Memory usage \d+%',
+        r'Updates available',
+        r'Connection (failed|lost|established)',
+        r'Low battery',
+        
+        # UI symbols and single-word UI elements  
+        r'^[☰⚙×✓□└├│▶▼◀▲►▼◄▲\s]+$',  # Lines with only UI symbols
+        r'^[─├└│┌┐┘┴┬┤┼\s]+$',        # Box drawing characters
+        r'^[\.\-_=\+\*#\|\s]+$',       # Punctuation/decoration lines
+        r'^(&nbsp;|&amp;|&lt;|&gt;)+$', # HTML entities
+        
+        # Tree/hierarchy indicators and single UI words
+        r'^[│├└]\s*[─\s]*\s*(Sub item|Tree item|Last sub item|Another tree item)$',
+        r'^(☰ Menu|⚙ Settings|× Close|✓ Check|□ Checkbox)$',
+        
+        # Repetitive characters or symbols  
+        r'^(.)\1{4,}$',  # Same character repeated 5+ times
+        r'^[\s\.\-_=\+\*#\|]{3,}$',  # Only punctuation/symbols
+    ]
+    
+    # Additional patterns for lines that are likely UI noise
+    noise_patterns = [
+        r'^\s*\d+\s*$',  # Lines with only numbers
+        r'^[^\w\s]*$',   # Lines with only non-alphanumeric, non-space characters
+        r'^[A-Z\s]{2,}$',  # Lines with only capital letters and spaces (likely UI labels)
+    ]
+    
     lines = text.splitlines()
     filtered_lines = []
+    
     for line in lines:
+        original_line = line
         line = line.strip()
+        
+        # Skip empty lines
+        if not line:
+            continue
+            
+        # Skip lines that are too short
         if len(line) < min_length:
             continue
+        
+        # Check against UI blacklist patterns
+        is_ui_noise = False
+        for pattern in ui_blacklist_patterns:
+            if re.search(pattern, line, re.IGNORECASE):
+                is_ui_noise = True
+                break
+        
+        if is_ui_noise:
+            continue
+            
+        # Check letter ratio (keep original logic)
         letters = re.findall(r"[A-Za-z]", line)
         letter_ratio = len(letters) / len(line) if len(line) > 0 else 0
+        
         if letter_ratio < min_letter_ratio:
             continue
-        if re.match(r"^[\d\s\W_]+$", line):
+            
+        # Skip lines that match noise patterns
+        is_noise = False
+        for pattern in noise_patterns:
+            if re.match(pattern, line):
+                is_noise = True
+                break
+                
+        if is_noise:
             continue
+            
+        # Keep lines that pass all filters
         filtered_lines.append(line)
+    
     return "\n".join(filtered_lines)
 
 import re
 
 def clean_whatsapp_text(text):
+    """
+    Clean WhatsApp OCR text by removing UI elements and limiting content.
+    Now uses improved filtering patterns from filter_ocr_text.
+    """
     lines = text.splitlines()
     cleaned = []
     for line in lines:
-        # Filter out UI elements, timestamps, "Chats", "File Edit", "Help", dates, etc.
-        if re.search(r'(File Edit|Help|Chats|Yesterday|Today|[0-9]{2}:[0-9]{2}|TRIAL PERIOD)', line, re.I):
+        line_stripped = line.strip()
+        
+        # Enhanced filter patterns for WhatsApp-specific and general UI elements
+        if re.search(r'(File Edit|Help|Chats|Yesterday|Today|[0-9]{1,2}:[0-9]{2}|TRIAL PERIOD)', line, re.I):
             continue
-        cleaned.append(line.strip())
+        # Additional general UI patterns from the improved filter
+        if re.search(r'^(Menu|Settings|Options)$', line_stripped, re.I):
+            continue
+        if re.search(r'^\d+ days? remaining', line, re.I):
+            continue
+        if re.search(r'^(Status|Error|Warning|Info):\s*', line, re.I):
+            continue
+            
+        cleaned.append(line_stripped)
+    
     # Return last 20 lines only to limit input size
     return "\n".join(cleaned[-20:])
 
